@@ -251,17 +251,19 @@ function fromJSON(proto, json) {
  *    ]
  */
 function sortCitiesArray(arr) {
-  function CompareCity(a, b) {
+  function compareCity(a, b) {
     if (a.city > b.city) return 1;
     if (a.city === b.city) return 0;
     if (a.city < b.city) return -1;
+    return 0;
   }
-  function CompareCountry(a, b) {
+  function compareCountry(a, b) {
     if (a.country > b.country) return 1;
-    if (a.country === b.country) return CompareCity(a, b);
+    if (a.country === b.country) return compareCity(a, b);
     if (a.country < b.country) return -1;
+    return 0;
   }
-  return arr.sort(CompareCountry);
+  return arr.sort(compareCountry);
 }
 
 /**
